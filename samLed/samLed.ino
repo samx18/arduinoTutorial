@@ -15,6 +15,7 @@ void loop(){
 
   if (digitalRead(switchPin) == HIGH && lastButton == LOW)
   {
+    //Flip to reverse value
     ledOn = !ledOn;
     lastButton = HIGH;
   }
