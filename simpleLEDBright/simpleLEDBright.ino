@@ -1,8 +1,10 @@
 int switchPin = 8;
-int ledPin = 13;
+int ledPin = 11;
 boolean lastButton = LOW;
 boolean currentButton = LOW;
-boolean ledOn = false;
+
+//variable to set led level between 0-255
+int ledLevel = 0;
 
 void setup(){
  
@@ -31,12 +33,16 @@ void loop(){
   
   if (lastButton == LOW && currentButton == HIGH)
   {
-    //Flip to reverse value
-    ledOn = !ledOn;
+    // Increment ledLevel
+    ledLevel = ledLevel + 51;
   }
-
+  
   lastButton = currentButton;
-  digitalWrite(ledPin, ledOn);
+  
+  if (ledLevel > 255) ledLevel = 0;
+
+  
+  analogWrite(ledPin, ledLevel);
 
 }
 
